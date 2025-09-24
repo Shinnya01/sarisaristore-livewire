@@ -1,8 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Laravel\Fortify\Features;
+use App\Livewire\Sales;
 use Livewire\Volt\Volt;
+use App\Livewire\Orders;
+use App\Livewire\Reports;
+use App\Livewire\Products;
+use App\Livewire\Settings;
+use App\Livewire\Customers;
+use Laravel\Fortify\Features;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +35,17 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+
+        
+    Route::get('products', Products::class)->name('products');
+    Route::get('customers', Customers::class)->name('customers');
+
+    Route::get('orders', Orders::class)->name('orders');
+    Route::get('reports', Reports::class)->name('reports');
+    Route::get('sales', Sales::class)->name('sales');
+    Route::get('settings', Settings::class)->name('settings');
+
+
 });
 
 require __DIR__.'/auth.php';

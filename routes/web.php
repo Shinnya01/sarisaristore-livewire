@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Home;
 use App\Livewire\Sales;
 use Livewire\Volt\Volt;
 use App\Livewire\Orders;
@@ -10,9 +11,11 @@ use App\Livewire\Customers;
 use Laravel\Fortify\Features;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
+
+Route::get('/', Home::class)->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -36,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 
+ 
         
     Route::get('products', Products::class)->name('products');
     Route::get('customers', Customers::class)->name('customers');
